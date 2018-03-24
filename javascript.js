@@ -4,8 +4,8 @@ var apiKey = "qIg1dr99bQ5tXzJh616bdsVRKQw96ttv";
 var topics = ["political infighting", "fist fights", "Parliament", "Washington DC", "House of Cards", "Ladders", "Lobbyist", "Corruption", "Ethics" ];
 var test = "sample";
 let addPhrase = topics.push();
-var i = 0;
 $( document ).ready(function(){
+    for (var i = 0; i < topics.length; i++)
 $.ajax({
 
     url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i]+ "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
@@ -24,26 +24,24 @@ $.ajax({
         $('#here_is_gif3').attr('src', giphyURL);
         $('#here_is_gif4').attr('src', giphyURL);
         $('#here_is_gif5').attr('src', giphyURL);
-        $('#here_is_gif5').attr('src', giphyURL);
+        $('#here_is_gif6').attr('src', giphyURL);
         $('#here_is_gif5').attr('src', giphyURL);
 
-        for (var i = 0; i <= topics.length; i++) {
-            // Then dynamically generating buttons for each item in the array
-            // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-            dynButtons(i);
 
-        function dynButtons(i) {
+            for (var i = 0; i < topics.length; i++){
             var giphyButton = $("<button>");
             // Adding a class to button
+            console.log(i);
             giphyButton.addClass("btn btn-primary btn-sm");
-            giphyButton.append('id', topics[i]);
+            giphyButton.append(topics[i]);
             
-            $(".info" + i).html(giphyButton);
-            $(".input-group").html(giphyButton);
-            $(".input-group").append(giphyButton);
-            $("#trivia-answer" + i).html(answerButton);
+            giphyButton.addClass(topics[i]);
+            giphyButton.html(topics[i]);
+            $("#inputGroup-sizing-default").append(giphyButton)
+           
+            }
 
-    }
+
 
 
         function imgSrc(i) {
@@ -56,7 +54,7 @@ $.ajax({
     }
     
 
-}
+
 });
 
 // This waits for the page to load before calling our jQuery
