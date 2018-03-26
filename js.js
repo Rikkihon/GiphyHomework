@@ -27,15 +27,10 @@ $(document).ready(function () {
             // }
         
     });
-
+    $(".btn btn-primary btn-sm").on("click", function(){
     $.ajax({
-        //This one is only displaying the buttons clicked URL 
-        //for (var i = 0; i < topics.length; i++){
-        url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
+    url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
         type: "GET",
-
-         //$(".btn btn-primary btn-sm").on("click", function() 
-         //displays the giphy when clicked 
         success: function (response) {
             
             for (var i = 0; i < topics.length; i++){
@@ -45,13 +40,10 @@ $(document).ready(function () {
                 $('.rando_facts').append('<img src=' + giphyURL + '></img>');
             }
         }
+    });
         // .fail(function (err) {
         //     throw err;
         // }
-
-    });
-
-
     $(".btn btn-primary btn-sm").on("click", function () {
         //http://umn.bootcampcontent.com/University-of-Minnesota-Boot-Camp/MINSTP201802FSF1-Class-Repository-FSF/blob/master/06-ajax/01-Activities/15-PausingGifs/Solved/pausing-gifs-solution.html
         // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
@@ -72,5 +64,6 @@ $(document).ready(function () {
         topics.push = $("#search").val().trim();
       
     });
+});
 });
 });
