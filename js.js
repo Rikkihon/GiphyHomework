@@ -1,6 +1,6 @@
 'use strict'
 var apiKey = "qIg1dr99bQ5tXzJh616bdsVRKQw96ttv";
-//var url = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YqIg1dr99bQ5tXzJh616bdsVRKQw96ttv;&limit=10";
+var url = "http://api.giphy.com/v1/gifs/search?q=" + topics[i]+ "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
 var topics = ["political infighting", "fist fights", "Parliament", "Washington DC", "House of Cards", "Ladders", "Lobbyist", "Corruption", "Ethics" ];
 var test = "sample";
 let addPhrase = topics.push();
@@ -19,14 +19,28 @@ $.ajax({
             var giphyButton = $("<button>");
             giphyButton.addClass("btn btn-primary btn-sm");
             giphyButton.html("<p>"+ topics[i]+"</p>");
-            $(".jumbotron").append(giphyButton)
-            $("#inputGroup-sizing-default").prepend("Rating: " + giphyRating + " ");
+            $("#main").append(giphyButton)
+        }     
+    }
+});
+$.ajax({
+    url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i]+ "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
+    type: "GET",
+    success: function(response) {
+    var giphyURL = response.data[i].images.fixed_height.url;
+    console.log(giphyURL)
+            $('#here_is_gif').attr('src', giphyURL);
+            $('.rando_facts').append('<img src=' + giphyURL+ '></img>');
         }     
     
-    }
-
 });
-$(".gif").on("click", function() {
+
+
+//$(".btn btn-primary btn-sm").on("click", function() 
+//displays the giphy when clicked 
+
+
+$(".btn btn-primary btn-sm").on("click", function() {
     //http://umn.bootcampcontent.com/University-of-Minnesota-Boot-Camp/MINSTP201802FSF1-Class-Repository-FSF/blob/master/06-ajax/01-Activities/15-PausingGifs/Solved/pausing-gifs-solution.html
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
     var state = $(this).attr("data-state");
@@ -40,12 +54,5 @@ $(".gif").on("click", function() {
       $(this).attr("src", $(this).attr("data-still"));
       $(this).attr("data-state", "still");
     }
-
-      // Part 3 - Clear the Gif using the reset_button id (#)
-      $('#reset_button').on('click', function(){
-        // Grab the img using the id and change the src to empty to remove the image
-        $('#here_is_gif').attr("src",'');
-      })
-
 });
 });

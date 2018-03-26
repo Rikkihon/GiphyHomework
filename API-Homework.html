@@ -18,7 +18,7 @@
 <body>
 
     <div class="container">
-        <div class="jumbotron" style="background-color: darkblue" "padding:10px 15px">
+        <div class="jumbotron" id = "main" style="background-color: darkblue" "padding:10px 15px">
           <h1 class="text-center" style="color: white; font-weight: bold;">
            Giphy Political Anguish: Click a Button to Begin!
           </h1>
@@ -28,15 +28,22 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default"></span>
                   </div>
-                  <div class="rando_facts animated bounceIn"></div>
+                  <div class="rando_facts animated bounceIn">
+                        <img id="here_is_gif" src="" alt="image"/>
+                  </div>
                WHat about here? </div>
             </div>
         </div>
         </div>
     </div>
+    <div class="jumbotron" id="add-another" style="background-color: purple" "padding:10px 15px">
+            <h1 class="text-center" style="color: gray; font-weight: bold;">
+             Add Another Political Button!
+            </h1>
+
     </body>
         <!--scripts-->
-        <!-- Added link to the jQuery library -->
+    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
