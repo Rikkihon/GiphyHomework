@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New York Times Search</title>
+      <!--links-->
+      <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
+      <link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <!-- Bring in our bootstrap stylesheet -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="jumbotron" style="background-color: darkblue">
+          <h1 class="text-center" style="color: white; font-weight: bold;">
+              <i class="fa fa-newspaper"></i>
+            New York Times Search
+          </h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-12"></div>
+            
+            <!--search area-->
+                <div class="input-group mb-3" style="padding:10px 15px">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Search Term</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id = "search" style = "width: 350px">
+                </div>
+            
+            <!--number of records -->
+                <div class="input-group" style="padding:10px 15px">
+                  <select class="custom-select" id="inputGroupSelect04">
+                    <option selected>Number of Records</option>
+                    <option class = "numRecords" value="1">1</option>
+                    <option class = "numRecords" value="5">5</option>
+                    <option class = "numRecords" value="10">10</option>
+                  </select>
+                </div>
+    
+                <!--Start Year -->
+                <div class="input-group mb-3" style="padding:10px 15px">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Start Year (optional)</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id = "startYear" style = "width: 350px">
+                </div>
+    
+                <!--End Year -->
+                <div class="input-group mb-3" style="padding:10px 15px">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">End Year (optional)</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id = "endYear" style = "width: 350px">
+                </div>
+    
+                <!--Button Group-->
+                <div class="button-group" style="padding:10px 15px">
+                <button class="btn btn-primary" id =  "searchBtn" type="submit" style ="background-color:darkblue">
+                  <span class="glyphicon glyphicon-search"></span>
+                  Search
+                </button>
+    
+                <button class="btn btn-primary" id = "clearBtn" type="submit" style ="background-color:darkblue">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  Clear All
+                </button>
+                </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="panel panel-default" style="margin-top: 20px">
+              <div class="panel-heading" style="background-color: darkblue; color: white; font-weight: bold">
+                  <i class="fas fa-align-justify"></i>
+                Top Articles
+              </div>
+              <div class="panel-body footer"></div>
+            </div>
+          </div>
+        </div>
+    </div>  
+    </body>
+        <!--scripts-->
+        <!-- Added link to the jQuery library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <script src="js.js"></script>
+</html>

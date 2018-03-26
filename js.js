@@ -3,7 +3,7 @@ var apiKey = "qIg1dr99bQ5tXzJh616bdsVRKQw96ttv";
 var i = 0;
 var topics = ["political infighting", "fist fights", "Parliament", "Washington DC", "House of Cards", "Ladders", "Lobbyist", "Corruption", "Ethics"];
 var url = "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;";
-let addPhrase = topics.push();
+let search = topics.push();
 $(document).ready(function () {
     for (var i = 0; i < 1; i++)
         $.ajax({
@@ -22,8 +22,15 @@ $(document).ready(function () {
                     $("#main").append(giphyButton)
                 }
             }
-        });
+            // .fail(function (err) {
+            //     throw err;
+            // }
+        
+    });
+
     $.ajax({
+        //This one is only displaying the buttons clicked URL 
+        //for (var i = 0; i < topics.length; i++){
         url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
         type: "GET",
 
@@ -38,6 +45,9 @@ $(document).ready(function () {
                 $('.rando_facts').append('<img src=' + giphyURL + '></img>');
             }
         }
+        // .fail(function (err) {
+        //     throw err;
+        // }
 
     });
 
@@ -56,5 +66,11 @@ $(document).ready(function () {
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still");
         }
+
+        //here is where I have the search function written 
+        $("#searchBtn").on("click", function (event) {
+        topics.push = $("#search").val().trim();
+      
     });
+});
 });
