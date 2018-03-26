@@ -1,58 +1,60 @@
 'use strict'
 var apiKey = "qIg1dr99bQ5tXzJh616bdsVRKQw96ttv";
-var url = "http://api.giphy.com/v1/gifs/search?q=" + topics[i]+ "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
-var topics = ["political infighting", "fist fights", "Parliament", "Washington DC", "House of Cards", "Ladders", "Lobbyist", "Corruption", "Ethics" ];
-var test = "sample";
+var i = 0;
+var topics = ["political infighting", "fist fights", "Parliament", "Washington DC", "House of Cards", "Ladders", "Lobbyist", "Corruption", "Ethics"];
+var url = "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;";
 let addPhrase = topics.push();
-$( document ).ready(function(){
+$(document).ready(function () {
     for (var i = 0; i < 1; i++)
-$.ajax({
+        $.ajax({
 
-    url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i]+ "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
-    type: "GET",
-    success: function(response) {
+            url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
+            type: "GET",
+            success: function (response) {
 
-        for (var i = 0; i < topics.length; i++) {
-            var giphyURL = response.data[i].images.fixed_height.url;
-            var imgSrc = ('img src=""');
-            var giphyRating = response.data[i].rating;
-            var giphyButton = $("<button>");
-            giphyButton.addClass("btn btn-primary btn-sm");
-            giphyButton.html("<p>"+ topics[i]+"</p>");
-            $("#main").append(giphyButton)
-        }     
-    }
-});
-$.ajax({
-    url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i]+ "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
-    type: "GET",
-    success: function(response) {
-    var giphyURL = response.data[i].images.fixed_height.url;
-    console.log(giphyURL)
-            $('#here_is_gif').attr('src', giphyURL);
-            $('.rando_facts').append('<img src=' + giphyURL+ '></img>');
-        }     
-    
-});
+                for (var i = 0; i < topics.length; i++) {
+                    var giphyURL = response.data[i].images.fixed_height.url;
+                    var imgSrc = ('img src=""');
+                    var giphyRating = response.data[i].rating;
+                    var giphyButton = $("<button>");
+                    giphyButton.addClass("btn btn-primary btn-sm");
+                    giphyButton.html("<p>" + topics[i] + "</p>");
+                    $("#main").append(giphyButton)
+                }
+            }
+        });
+    $.ajax({
+        url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
+        type: "GET",
+
+         //$(".btn btn-primary btn-sm").on("click", function() 
+         //displays the giphy when clicked 
+        success: function (response) {
+            
+            for (var i = 0; i < topics.length; i++){
+                var giphyURL = response.data[i].images.fixed_height.url;
+                console.log(giphyURL)
+                $('#here_is_gif').attr('src', giphyURL);
+                $('.rando_facts').append('<img src=' + giphyURL + '></img>');
+            }
+        }
+
+    });
 
 
-//$(".btn btn-primary btn-sm").on("click", function() 
-//displays the giphy when clicked 
-
-
-$(".btn btn-primary btn-sm").on("click", function() {
-    //http://umn.bootcampcontent.com/University-of-Minnesota-Boot-Camp/MINSTP201802FSF1-Class-Repository-FSF/blob/master/06-ajax/01-Activities/15-PausingGifs/Solved/pausing-gifs-solution.html
-    // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-    var state = $(this).attr("data-state");
-    // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-    // Then, set the image's data-state to animate
-    // Else set src to the data-still value
-    if (state === "still") {
-      $(this).attr("src", $(this).attr("data-animate"));
-      $(this).attr("data-state", "animate");
-    } else {
-      $(this).attr("src", $(this).attr("data-still"));
-      $(this).attr("data-state", "still");
-    }
-});
+    $(".btn btn-primary btn-sm").on("click", function () {
+        //http://umn.bootcampcontent.com/University-of-Minnesota-Boot-Camp/MINSTP201802FSF1-Class-Repository-FSF/blob/master/06-ajax/01-Activities/15-PausingGifs/Solved/pausing-gifs-solution.html
+        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+        var state = $(this).attr("data-state");
+        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+        // Then, set the image's data-state to animate
+        // Else set src to the data-still value
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    });
 });
