@@ -2,13 +2,13 @@
 var apiKey = "qIg1dr99bQ5tXzJh616bdsVRKQw96ttv";
 var i = 0;
 var topics = ["political infighting", "fist fights", "Parliament", "Washington DC", "House of Cards", "Ladders", "Lobbyist", "Corruption", "Ethics"];
-var url = "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;";
+var url = "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=3;";
 $(document).ready(function () {
     console.log("Run!");
     for (var i = 0; i < 1; i++) {
         $.ajax({
 
-            url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
+            url: "http://api.giphy.com/v1/gifs/search?q=" + topics[i] + "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=3;",
             type: "GET",
             success: function (response) {
                  
@@ -21,8 +21,7 @@ $(document).ready(function () {
                     giphyButton.addClass("btn btn-primary btn-sm");
                     giphyButton.html("<p>" + topics[i] + "</p>");
                     $("#main").append(giphyButton);
-                    $("#main").prepend(giphyRating);
-                    console.log("Can this show up?")
+                    
                 }
             }
         });
@@ -39,11 +38,13 @@ $(document).ready(function () {
             url: "http://api.giphy.com/v1/gifs/search?q=" +$(event.currentTarget).find("p").text()+ "&api_key=qIg1dr99bQ5tXzJh616bdsVRKQw96ttv&limit=10;",
             type: "GET",
             success: function (response) {
-                 for (var i = 0; i <= 2; i++) {
+                 for (var i = 0; i <= 10; i++) {
+                    var giphyRating = response.data[i].rating;
                     var giphyURL = response.data[i].images.fixed_height.url;
                     var staticURL = response.data[i].images.fixed_height_still.url;
                     console.log(giphyURL);
-                    $('.rando_facts').append('<img src=' + staticURL + ' data-state="still" data-still="'+staticURL+'" data-animate="'+giphyURL+'"></img>');
+                    //$(".rando_facts").prepend('<h2>Rating' + giphyRating+' "</h2>');
+                    $('.rando_facts').append('<h2>Rating: ' + giphyRating+' </h2><img src=' + staticURL + ' data-state="still" data-still="'+staticURL+'" data-animate="'+giphyURL+'"></img>');
                 }
 
             }
