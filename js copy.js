@@ -22,7 +22,7 @@ $(document).ready(function () {
                     giphyButton.html("<p>" + topics[i] + "</p>");
                     $("#main").append(giphyButton);
                     $("#main").prepend(giphyRating);
-                    console.log("Can this show up?")
+                     
                 }
             }
         });
@@ -57,26 +57,18 @@ $(document).ready(function () {
         event.preventDefault();
         let searchGiphy = $("#Add").val().trim();
         topics.push(searchGiphy);
-        var giphyButton = $("<button>"); //   <button>giphy searc text</button>
-        giphyButton.html("<p>" + searchGiphy + "</p>"); //   <button><p>giphy searc text</p></button>
-        //giphyButton.text(giphyButton) //   <button>giphy searc text</button>
+        var giphyButton = $("<button>");  
+        giphyButton.html("<p>" + searchGiphy + "</p>"); 
 
         giphyButton.addClass("btn btn-primary btn-sm");
-        //giphyButton.html("<p>" + add + "</p>");
         $("#main").append(giphyButton);
 
     });
 
 
     $(".jumbotron").on("click", "img",  function (event) {
-        //http://umn.bootcampcontent.com/University-of-Minnesota-Boot-Camp/MINSTP201802FSF1-Class-Repository-FSF/blob/master/06-ajax/01-Activities/15-PausingGifs/Solved/pausing-gifs-solution.html
-        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-         
         var state = $(this).attr("data-state");
         console.log(state);
-        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-        // Then, set the image's data-state to animate
-        // Else set src to the data-still valueZZZ
         if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
